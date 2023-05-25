@@ -9,6 +9,8 @@ packages = [{include = "cifra_k_test"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 django = "^4.2.1"
+django-environ = "^0.10.0"
+psycopg2-binary = "^2.9.6"
 
 [tool.poetry.dev-dependencies]
 black = "*"

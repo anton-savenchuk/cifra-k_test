@@ -1,14 +1,13 @@
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 
 # Logs
 logs/
 *.log
 
-__pycache__
-.mypy_cache
+__pycache__/
 .venv/
 .env/
 setup.cfg

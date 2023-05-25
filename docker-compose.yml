@@ -1,0 +1,39 @@
+version: '3.8'
+
+volumes:
+  pgdata:
+  static:
+  media:
+
+
+services:
+
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    container_name: django
+    env_file:
+      - docker/env/.env.dev
+    volumes:
+      - ./:/app
+      - static:/app/static
+      - media:/app/media
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: 'postgres://postgres:postgres@db:5432/postgres'
+    command: sh -c "poetry run python manage.py runserver 0.0.0.0:8000"
+
+  postgres:
+    image: postgres:alpine
+    container_name: postgres
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: cifra_k_news
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
