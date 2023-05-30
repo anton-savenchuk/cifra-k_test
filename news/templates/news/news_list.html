@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock%}
+
+{% block content %}
+    {% for news_item in news %}
+        {% if news_item.thumbnail %}
+        <img src={{ news_item.thumbnail.url }} alt={{ news_item.title }} width="200"/>
+        {% endif %}
+        <strong>{{ news_item.title }}</strong>
+        <p>{{ news_item.description|safe }}</p>
+        <small>{{ news_item.time_create }}</small>
+    {% endfor %}
+{% endblock %}

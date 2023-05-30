@@ -8,6 +8,9 @@ logs/
 *.log
 
 __pycache__/
+migrations/
+media/
+static/
 .venv/
 .env/
 setup.cfg
